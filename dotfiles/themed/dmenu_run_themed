@@ -1,0 +1,2 @@
+#!/bin/bash
+exec dmenu_run -nf '#65737e' -nb '#343d46' -sf '#343d46' -sb '#ebcb8b'

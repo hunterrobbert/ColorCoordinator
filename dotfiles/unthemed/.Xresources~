@@ -1,0 +1,58 @@
+
+URxvt.intensityStyles: false
+URxvt*buffered: true
+URxvt*cursorBlink: true
+URxvt*underlineColor: yellow
+URxvt*font: xft:Input Mono:size=9:antialias=true:style=regular 
+Urxvt*letterSpacing: -1
+URxvt*depth: 32
+URxvt*borderless: 1
+URxvt*scrollBar: false
+URxvt*loginShell: true
+URxvt*secondaryScroll: true # Enable Shift-PageUp/Down in screen
+URxvt*saveLines: 5000
+URxvt*termName: rxvt-unicode
+URxvt.perl-ext-common: default,matcher
+URxvt.urlLauncher: chromium
+URxvt.matcher.button: 1
+Urxvt.inputMethod:fcitx
+
+
+*background:			S_base_OC
+*foreground:			S_base_O1
+*cursorColor:			S_base_A1
+*pointerColorBackground:	S_base_OA
+*pointerColorForeground:	S_base_A1
+
+!! black dark/light
+*color0:			S_base_OB
+*color8:			S_base_OC
+
+!! red dark/light
+*color1:			S_red
+*color9:			S_orange
+
+!! green dark/light
+*color2:			S_green
+*color10:			S_base_OA
+
+!! yellow dard/light
+*color3:			S_yellow
+*color11:			S_base_OO
+
+!! blue dark/light
+*color4:			S_blue
+*color12:			S_base_O1
+
+!! magenta dark/light
+*color5:			S_magenta
+*color13:			S_violet
+
+!! cyan dark/light
+*color6:			S_cyan
+*color14:			S_base_A1
+
+!! white dark/light
+*color7:			S_base_B2
+*color15:			S_base_C3
+

@@ -1,0 +1,4 @@
+[package]
+name = "color_coordinator"
+version = "0.1.0"
+authors = ["Hunter Stich <hunterstich@gmail.com>"]
