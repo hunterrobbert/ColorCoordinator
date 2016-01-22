@@ -1,7 +1,7 @@
 /* AGENT_SHEET */
 @namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
 #tabbrowser-tabs {
-  background-color: #2b303b; }
+  background-color: #002b36; }
 
 #back-button .toolbarbutton-icon,
 #forward-button .toolbarbutton-icon {
@@ -74,12 +74,12 @@ toolbar#addon-bar #addonbar-closebutton,
 #browser-border-end,
 #browser-border-start {
   border: none !important;
-  background: #c0c5ce !important; }
+  background: #93a1a1 !important; }
 
 #main-window[sizemode=normal] #browser-bottombox {
   border: 0 !important;
   height: 1px !important;
-  background: #c0c5ce !important; }
+  background: #93a1a1 !important; }
 
 #nav-bar #PanelUI-menu-button {
   padding: 0 !important; }
@@ -95,10 +95,10 @@ select > input {
   opacity: 0 !important; }
 
 #content[disablehistory] {
-  background-color: #2b303b !important; }
+  background-color: #002b36 !important; }
 
 #_dlbar_finTipContent {
-  background: #eff1f5 !important;
+  background: #fdf6e3 !important;
   border: 1px solid gray !important;
   border-radius: 0px !important; }
 
@@ -165,9 +165,9 @@ tab {
   padding: 0 2px !important; }
 
 #main-window .tabbrowser-tab:not(:-moz-lwtheme) {
-  background-color: #2b303b !important;
+  background-color: #002b36 !important;
   box-shadow: inset 0 -5px 15px -15px rgba(0, 0, 0, 0.1) !important;
-  color: #4f5b66 !important; }
+  color: #586e75 !important; }
 
 /* Tab Hover */
 #main-window .tabbrowser-tab:-moz-any(:not([pinned]), [pinned]:not([titlechanged])):not([selected]):hover {
@@ -176,7 +176,7 @@ tab {
 
 /* Selected Tab */
 #main-window .tabbrowser-tab[selected] {
-  background-color: #343d46 !important;
+  background-color: #073642 !important;
   box-shadow: none !important;
   /*   background-image: -moz-linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.5) 50%) !important; */
   color: #666 !important; }
@@ -196,7 +196,7 @@ tab {
   margin-top: 1px !important;
   padding-left: 2px !important;
   padding-right: 2px !important;
-  background: #dfe1e8 !important;
+  background: #eee8d5 !important;
   box-shadow: inset 0 -5px 15px -15px rgba(0, 0, 0, 0.5) !important;
   border: 1px solid rgba(71, 79, 115, 0.25) !important;
   border-bottom: none !important;
@@ -209,17 +209,17 @@ tab {
   background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.6)) !important; }
 
 .tabs-newtab-button:active {
-  background-color: #eff1f5 !important;
+  background-color: #fdf6e3 !important;
   box-shadow: none !important;
   background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.5) 50%) !important;
-  color: #4f5b66 !important; }
+  color: #586e75 !important; }
 
 /**
  *     URL BAR
  *     */
 #nav-bar {
   -moz-appearance: none !important;
-  background: #2b303b !important;
+  background: #002b36 !important;
   border: none !important;
   height: 35px !important;
   padding: 0 !important;
@@ -253,14 +253,14 @@ tab {
 /* actual url bar */
 #urlbar {
   box-shadow: none !important;
-  color: #c0c5ce !important;
+  color: #93a1a1 !important;
   border-radius: 2px !important;
-  background: #2b303b !important;
+  background: #002b36 !important;
   font-family: "Segoe UI", sans-serif !important;
   font-size: 10pt !important;
   margin: 1px 3px 3px -5px !important;
   padding: 2px 0 2px 5px !important;
-  border: 0px solid #eff1f5 !important; }
+  border: 0px solid #fdf6e3 !important; }
 
 /* URL bar drop down */
 #PopupAutoCompleteRichResult:not([width]) {
@@ -329,22 +329,22 @@ tab {
 /* VIMPERATOR STYLES */
 /*change cmd box*/
 #liberator-commandline-command {
-  color: #65737e !important;
+  color: #657b83 !important;
   background: white !important; }
 
 /*change statusbar*/
 #liberator-statusline {
-  color: #ebcb8b !important;
-  background: #2b303b !important;
+  color: #dc322f !important;
+  background: #002b36 !important;
   border: 0pt solid lightgray !important; }
 
 /*change bg of the rest of the statusbar*/
 #status-bar {
-  background-color: #2b303b !important; }
+  background-color: #002b36 !important; }
 
 /*larger cmd line font*/
 #liberator-commandline {
-  background: #2b303b !important;
+  background: #002b36 !important;
   font-size: 1em !important; }
 
 /*add some space to : */
@@ -362,20 +362,20 @@ tab {
 /*change border-color on mouseover*/
 #liberator-container:hover,
 #liberator-statusline:hover {
-  border-color: #2b303b !important; }
+  border-color: #002b36 !important; }
 
 /*stuff in the rightside of statusbar*/
 #liberator-statusline-field-inputbuffer {
-  color: #ab7967 !important; }
+  color: #859900 !important; }
 
 #liberator-statusline-field-progress {
-  color: #d08770 !important; }
+  color: #cb4b16 !important; }
 
 #liberator-statusline-field-tabcount {
-  color: #8fa1b3 !important; }
+  color: #268bd2 !important; }
 
 #liberator-statusline-field-bufferposition {
-  color: #96b5b4 !important; }
+  color: #6c71c4 !important; }
 
 /*
  *     Icon replacements
@@ -589,13 +589,13 @@ scrollbar > slider {
 
 scrollbar > slider > thumb {
   border: none !important;
-  background-color: #c0c5ce !important;
+  background-color: #93a1a1 !important;
   border-radius: 16px !important;
   opacity: 1 !important; }
 
 scrollbar > slider > thumb:hover,
 scrollbar > slider > thumb:active {
-  background-color: #a7adba !important; }
+  background-color: #839496 !important; }
 
 /**
  *     ADD-ONS PAGE

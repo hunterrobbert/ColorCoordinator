@@ -143,6 +143,8 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# lock with i3
+bindsym $mod+Escape exec $HOME/Code/scripts/lock
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -181,7 +183,7 @@ bindsym XF86AudioMute exec $(amixer get Master | grep off > /dev/null && amixer 
 bindsym $mod+z exec --no-startup-id /usr/local/bin/touchpad_toggle.sh
 
 #use feh to set the desktop background
-exec --no-startup-id feh --bg-fill /home/hunter/Pictures/wallpapers/lake.png
+exec --no-startup-id feh --bg-fill /home/hunter/Pictures/wallpapers/robocop.png
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)

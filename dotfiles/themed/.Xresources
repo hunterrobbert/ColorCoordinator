@@ -1,19 +1,19 @@
-#define S_base_OC   #2b303b
-#define S_base_OB   #343d46
-#define S_base_OA   #4f5b66
-#define S_base_OO   #65737e
-#define S_base_O1   #a7adba
-#define S_base_A1   #c0c5ce
-#define S_base_B2   #dfe1e8
-#define S_base_C3   #eff1f5
-#define S_yellow   #bf616a
-#define S_orange   #d08770
-#define S_red   #ebcb8b
-#define S_magenta   #a3be8c
-#define S_violet   #96b5b4
-#define S_blue   #8fa1b3
-#define S_cyan   #b48ead
-#define S_green   #ab7967
+#define S_base_OC   #002b36
+#define S_base_OB   #073642
+#define S_base_OA   #586e75
+#define S_base_OO   #657b83
+#define S_base_O1   #839496
+#define S_base_A1   #93a1a1
+#define S_base_B2   #eee8d5
+#define S_base_C3   #fdf6e3
+#define S_yellow   #b58900
+#define S_orange   #cb4b16
+#define S_red   #dc322f
+#define S_magenta   #d33682
+#define S_violet   #6c71c4
+#define S_blue   #268bd2
+#define S_cyan   #2aa198
+#define S_green   #859900
 
 URxvt.intensityStyles: false
 URxvt*buffered: true

@@ -1,4 +1,5 @@
 mod colorscheme;
+mod constants;
 
 use std::io::prelude::*;
 use std::io;
@@ -11,23 +12,7 @@ use std::io::BufReader;
 
 use colorscheme::ColorScheme;
 
-const THEME_DIR: &'static str = "src/schemes/";
 
-// Dot file constants
-const THEMED_DIR: &'static str = "dotfiles/themed/";
-const UNTHEMED_DIR: &'static str = "dotfiles/unthemed/";
-
-const XRES: &'static str = ".Xresources";
-const I3CONFIG: &'static str = "config";
-const I3STATUS: &'static str = "i3status.conf";
-const VIM: &'static str = "coordinated.vim";
-const DMENU: &'static str = "dmenu_run_themed";
-
-const XRES_FINAL_DEST: &'static str = "/home/hunter/";
-const I3CONFIG_FINAL_DEST: &'static str = "/home/hunter/.i3/";
-const I3STATUS_FINAL_DEST: &'static str = "/home/hunter/.i3/";
-const VIM_FINAL_DEST: &'static str = "/home/hunter/.vim/colors/";
-const DMENU_FINAL_DEST: &'static str = "/home/hunter/.i3/";
 
 fn generate_firefox_theme(c: &ColorScheme) -> io::Result<()> {
     println!("Generating: {}", "coordinated.css");
@@ -48,11 +33,11 @@ fn generate_firefox_theme(c: &ColorScheme) -> io::Result<()> {
 }
 
 fn generate_vim_theme(c: &ColorScheme) -> io::Result<()> {
-    println!("Generating: {}", VIM);
+    println!("Generating: {}", constants::VIM);
 
-    let mut themed_f = try!(File::create(get_themed_path(&VIM)));
+    let mut themed_f = try!(File::create(get_themed_path(&constants::VIM)));
 
-    let unthemed_f = match File::open(Path::new(&get_unthemed_path(&VIM))) {
+    let unthemed_f = match File::open(Path::new(&get_unthemed_path(&constants::VIM))) {
         Ok(unthemed_f) => unthemed_f,
         Err(..) => panic!("Error opening unthemed vim"),
     };
@@ -84,9 +69,9 @@ fn generate_vim_theme(c: &ColorScheme) -> io::Result<()> {
 
 
 fn generate_dmenu_script(c: &ColorScheme) -> io::Result<()> {
-    println!("Generating: {}", DMENU);
+    println!("Generating: {}", constants::DMENU);
 
-    let mut themed_f = try!(File::create(get_themed_path(&DMENU)));
+    let mut themed_f = try!(File::create(get_themed_path(&constants::DMENU)));
 
     try!(writeln!(themed_f, "#!/bin/bash"));
 
@@ -101,9 +86,9 @@ fn generate_dmenu_script(c: &ColorScheme) -> io::Result<()> {
 }
 
 fn generate_themed_i3status(c: &ColorScheme) -> io::Result<()> {
-    println!("Generating: {}", &I3STATUS);
+    println!("Generating: {}", &constants::I3STATUS);
 
-    let mut themed_f = try!(File::create(get_themed_path(&I3STATUS)));
+    let mut themed_f = try!(File::create(get_themed_path(&constants::I3STATUS)));
     
     let good = colorscheme::get_color_at_index(c, 15);
     let degraded = colorscheme::get_color_at_index(c, 4);
@@ -117,7 +102,7 @@ fn generate_themed_i3status(c: &ColorScheme) -> io::Result<()> {
     try!(writeln!(themed_f, "   interval = 5"));
     try!(writeln!(themed_f, "}}"));
     
-    let unthemed_f = match File::open(Path::new(&get_unthemed_path(&I3STATUS))) {
+    let unthemed_f = match File::open(Path::new(&get_unthemed_path(&constants::I3STATUS))) {
         Ok(unthemed_f) => unthemed_f,
         Err(..) => panic!("Error opening unthemed i3status.conf"),
     };
@@ -182,11 +167,11 @@ fn write_on_color_loop(c: &ColorScheme, file: &mut File, pre_n: &str, pst_n_pre_
 }
 
 fn get_themed_path(f: &str) -> String {
-    THEMED_DIR.to_string() + f
+    constants::THEMED_DIR.to_string() + f
 }
 
 fn get_unthemed_path(f: &str) -> String {
-    UNTHEMED_DIR.to_string() + f
+    constants::UNTHEMED_DIR.to_string() + f
 }
 
 fn clear_themed_dir(dir: &str) -> io::Result<()> {
@@ -204,7 +189,7 @@ fn clear_themed_dir(dir: &str) -> io::Result<()> {
 
 fn list_available_themes() -> io::Result<()> {
 
-    for entry in try!(fs::read_dir(THEME_DIR)) {
+    for entry in try!(fs::read_dir(constants::THEME_DIR)) {
         let file = try!(entry);
         let path = file.path();
         let ext = path.extension().unwrap();
@@ -263,8 +248,29 @@ fn main() {
     let mut c = ColorScheme::new();
     c.set_color(&theme_choice);
 
+    for (i, f) in constants::get_supported_files().iter().enumerate() {
+        println!("[{}]  {}", i, f);
+    }
+
+    println!("\nWhich files would you like to generate?");
+    println!("Separate numbers by commas.");
+
+    let mut file_choices = String::new();
+    io::stdin().read_line(&mut file_choices)
+        .ok()
+        .expect("Couldn't interpret your file(s) choice");
+
+    let opts: Vec<_> = file_choices.split(",").collect();
+
+    for i in opts {
+        println!("{}", i.trim());
+    }
+
+    
+
+
     //clear all colored filed
-    clear_themed_dir(&THEMED_DIR)
+    clear_themed_dir(&constants::THEMED_DIR)
         .ok()
         .expect("Couldn't clear previously generated themed files");
 
@@ -274,12 +280,12 @@ fn main() {
 
     // generate all new themed files
     let xres_args = ("#define S_", "   ", "");
-    generate_themed_file(&c, &XRES, xres_args)
+    generate_themed_file(&c, &constants::XRES, xres_args)
         .ok()
         .expect("Couldn't write themed Xresource file!");
 
     let conf_args = ("set $", " ", "");
-    generate_themed_file(&c, &I3CONFIG, conf_args)
+    generate_themed_file(&c, &constants::I3CONFIG, conf_args)
         .ok()
         .expect("Couldn't generate i3 config file!");
 
@@ -299,23 +305,23 @@ fn main() {
         .ok()
         .expect("Couldn't generate new firefox theme css");
 
-    place_new_themed_file(&XRES, &XRES_FINAL_DEST)
+    place_new_themed_file(&constants::XRES, &constants::XRES_FINAL_DEST)
         .ok()
         .expect("Couldn't place new XRES file in proper fs location.");
 
-    place_new_themed_file(&I3CONFIG, &I3CONFIG_FINAL_DEST)
+    place_new_themed_file(&constants::I3CONFIG, &constants::I3CONFIG_FINAL_DEST)
         .ok()
         .expect("Couldn't place new I3CONFIG file in proper fs location");
 
-    place_new_themed_file(&I3STATUS, &I3STATUS_FINAL_DEST)
+    place_new_themed_file(&constants::I3STATUS, &constants::I3STATUS_FINAL_DEST)
         .ok()
         .expect("Couldn't place new I3STATUS file in proper fs location");
 
-    place_new_themed_file(&VIM, &VIM_FINAL_DEST)
+    place_new_themed_file(&constants::VIM, &constants::VIM_FINAL_DEST)
         .ok()
         .expect("Couldn't place new VIM file in proper fs location.");
 
-    place_new_themed_file(&DMENU, &DMENU_FINAL_DEST)
+    place_new_themed_file(&constants::DMENU, &constants::DMENU_FINAL_DEST)
         .ok()
         .expect("Couldn't place new DMENU file in proper fs location.");
 
