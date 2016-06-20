@@ -264,6 +264,7 @@ fn main() {
 
     for i in opts {
         println!("{}", i.trim());
+        //TODO: finish changes to make file options work
     }
 
     
